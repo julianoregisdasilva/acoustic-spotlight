@@ -1,29 +1,184 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { Play, Instagram } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Renato Acústico — Música ao vivo para bares, restaurantes e eventos" },
+      { name: "description", content: "Renato Acústico: voz e violão para bares, restaurantes e eventos corporativos. Repertório versátil e clima sob medida." },
+      { property: "og:title", content: "Renato Acústico — Música ao vivo" },
+      { property: "og:description", content: "Voz e violão para bares, restaurantes e eventos corporativos." },
+      { property: "og:image", content: "/images/foto1.jpeg" },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+const videos = [
+  { id: "FOPq1gI7ByU", title: "Apresentação ao vivo 1" },
+  { id: "vvlak9jRG-s", title: "Apresentação ao vivo 2" },
+  { id: "sVn8KeRTTsc", title: "Short 1" },
+  { id: "ha07Xzf2GrE", title: "Short 2" },
+];
+
+const fotos = [
+  "/images/foto1.jpeg",
+  "/images/foto2.jpeg",
+  "/images/foto3.jpeg",
+  "/images/foto4.jpeg",
+];
+
+function VideoCard({ id, title }: { id: string; title: string }) {
+  const [playing, setPlaying] = useState(false);
+  const thumb = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+  return (
+    <div className="group relative aspect-video w-full overflow-hidden rounded-xl border border-border bg-card shadow-lg">
+      {playing ? (
+        <iframe
+          className="absolute inset-0 h-full w-full"
+          src={`https://www.youtube.com/embed/${id}?autoplay=1&rel=0`}
+          title={title}
+          allow="accelerated-sensors; autoplay; encrypted-media; picture-in-picture"
+          allowFullScreen
+        />
+      ) : (
+        <button
+          type="button"
+          onClick={() => setPlaying(true)}
+          aria-label={`Reproduzir ${title}`}
+          className="absolute inset-0 flex items-center justify-center"
+        >
+          <img
+            src={thumb}
+            alt={title}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <span className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+          <span className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl transition-transform duration-300 group-hover:scale-110">
+            <Play className="h-7 w-7 translate-x-0.5 fill-current" />
+          </span>
+        </button>
+      )}
+    </div>
+  );
+}
+
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Hero / Header */}
+      <header className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-primary)/15%,_transparent_60%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+        <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 py-16 text-center md:py-24">
+          <img
+            src="/images/logo.jpeg"
+            alt="Renato Acústico logo"
+            className="h-40 w-40 rounded-full object-cover shadow-2xl ring-2 ring-primary/40 md:h-52 md:w-52"
+          />
+          <h1 className="mt-8 text-3xl font-light tracking-wide md:text-5xl">
+            Música ao vivo, <span className="text-primary">do seu jeito</span>
+          </h1>
+          <p className="mt-4 max-w-xl text-base text-muted-foreground md:text-lg">
+            Voz e violão para bares, restaurantes e eventos corporativos.
+          </p>
+        </div>
+      </header>
+
+      {/* Seção 1: Vídeos */}
+      <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
+        <div className="mb-10 flex items-end justify-between gap-4">
+          <h2 className="text-2xl font-light tracking-wide md:text-3xl">
+            <span className="text-accent">/</span> Vídeos
+          </h2>
+          <div className="h-px flex-1 bg-border" />
+        </div>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {videos.map((v) => (
+            <VideoCard key={v.id} id={v.id} title={v.title} />
+          ))}
+        </div>
+      </section>
+
+      {/* Seção 2: Fotos */}
+      <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
+        <div className="mb-10 flex items-end justify-between gap-4">
+          <h2 className="text-2xl font-light tracking-wide md:text-3xl">
+            <span className="text-accent">/</span> Fotos
+          </h2>
+          <div className="h-px flex-1 bg-border" />
+        </div>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {fotos.map((src, i) => (
+            <div
+              key={src}
+              className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-card shadow-lg"
+            >
+              <img
+                src={src}
+                alt={`Foto ${i + 1} — Renato Acústico`}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Seção 3: Contato */}
+      <section className="mx-auto max-w-4xl px-6 py-20 text-center md:py-28">
+        <div className="mb-10 flex items-end justify-between gap-4">
+          <h2 className="text-2xl font-light tracking-wide md:text-3xl">
+            <span className="text-accent">/</span> Contato
+          </h2>
+          <div className="h-px flex-1 bg-border" />
+        </div>
+        <p className="mx-auto max-w-xl text-muted-foreground">
+          Disponível para shows, eventos corporativos e datas especiais.
+        </p>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
+          <a
+            href="https://wa.me/5548991677275"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Falar no WhatsApp"
+            className="group flex items-center gap-3 rounded-full border border-border bg-card px-6 py-4 shadow-lg transition-all hover:border-primary hover:shadow-primary/20"
+          >
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:scale-110">
+              {/* WhatsApp icon */}
+              <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.04 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.886 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.548 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+            </span>
+            <span className="text-left">
+              <span className="block text-xs uppercase tracking-widest text-muted-foreground">WhatsApp</span>
+              <span className="block font-medium">(48) 99167-7275</span>
+            </span>
+          </a>
+
+          <a
+            href="https://www.instagram.com/renatoacustico/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir Instagram em nova aba"
+            className="group flex items-center gap-3 rounded-full border border-border bg-card px-6 py-4 shadow-lg transition-all hover:border-accent hover:shadow-accent/20"
+          >
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-accent-foreground transition-transform group-hover:scale-110">
+              <Instagram className="h-6 w-6" />
+            </span>
+            <span className="text-left">
+              <span className="block text-xs uppercase tracking-widest text-muted-foreground">Instagram</span>
+              <span className="block font-medium">@renatoacustico</span>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
+        © {new Date().getFullYear()} Renato Acústico
+      </footer>
     </div>
   );
 }
