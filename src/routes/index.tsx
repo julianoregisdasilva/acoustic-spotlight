@@ -30,11 +30,11 @@ const fotos = [
   "/images/foto4.jpeg",
 ];
 
-// Reusable hover-frame: transparent 1px border that fades to Instagram blue on hover.
+// Reusable hover-frame: transparent 2px border that fades to accent cyan on hover.
 const hoverFrame =
   "relative overflow-hidden rounded-xl bg-card shadow-lg " +
-  "border border-transparent transition-[border-color,box-shadow] duration-300 ease-out " +
-  "hover:cursor-pointer hover:border-accent hover:shadow-[0_0_0_1px_var(--accent)]";
+  "border-2 border-transparent transition-[border-color,box-shadow] duration-300 ease-out " +
+  "hover:cursor-pointer hover:border-accent hover:shadow-[0_0_0_2px_var(--accent)]";
 
 function VideoCard({ id, title }: { id: string; title: string }) {
   const [playing, setPlaying] = useState(false);
@@ -115,7 +115,7 @@ function Index() {
       <section className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <div className="mb-10 flex items-end justify-between gap-4">
           <h2 className="text-2xl font-light tracking-wide md:text-3xl">
-            <span className="text-primary">/</span> Vídeos
+            <span className="text-accent">/</span> Vídeos
           </h2>
           <div className="h-px flex-1 bg-border" />
         </div>
@@ -130,7 +130,7 @@ function Index() {
       <section className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <div className="mb-10 flex items-end justify-between gap-4">
           <h2 className="text-2xl font-light tracking-wide md:text-3xl">
-            <span className="text-primary">/</span> Fotos
+            <span className="text-accent">/</span> Fotos
           </h2>
           <div className="h-px flex-1 bg-border" />
         </div>
@@ -145,7 +145,7 @@ function Index() {
       <section className="mx-auto max-w-4xl px-6 py-20 text-center md:py-24">
         <div className="mb-10 flex items-end justify-between gap-4">
           <h2 className="text-2xl font-light tracking-wide md:text-3xl">
-            <span className="text-primary">/</span> Contato
+            <span className="text-accent">/</span> Contato
           </h2>
           <div className="h-px flex-1 bg-border" />
         </div>
