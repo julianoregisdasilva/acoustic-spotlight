@@ -1,7 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Play, Instagram, X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import video1 from "@/assets/video_1.mp4.asset.json";
+import video2 from "@/assets/video_2.mp4.asset.json";
+import video3 from "@/assets/video_3.mp4.asset.json";
+import video4 from "@/assets/video_4.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
