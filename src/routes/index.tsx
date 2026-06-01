@@ -124,7 +124,7 @@ function Index() {
           </h2>
           <div className="h-px flex-1 bg-border" />
         </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
           {videos.map((v) => (
             <VideoCard key={v.src} src={v.src} title={v.title} />
           ))}
