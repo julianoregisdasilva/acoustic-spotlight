@@ -158,7 +158,7 @@ function Index() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Falar no WhatsApp"
-            className="group flex items-center gap-3 rounded-full border border-border bg-card px-6 py-4 shadow-lg transition-all hover:cursor-pointer hover:border-primary hover:shadow-primary/20"
+            className="group flex items-center gap-3 rounded-full border border-border bg-card px-6 py-4 shadow-lg transition-all hover:cursor-pointer hover:border-primary hover:shadow-[0_0_6px_rgba(255,154,5,0.15)]"
           >
             <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:scale-110">
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
@@ -176,7 +176,7 @@ function Index() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Abrir Instagram em nova aba"
-            className="group flex items-center gap-3 rounded-full border border-border bg-card px-6 py-4 shadow-lg transition-all hover:cursor-pointer hover:border-accent hover:shadow-accent/20"
+            className="group flex items-center gap-3 rounded-full border border-border bg-card px-6 py-4 shadow-lg transition-all hover:cursor-pointer hover:border-accent hover:shadow-[0_0_6px_rgba(5,232,255,0.15)]"
           >
             <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-accent-foreground transition-transform group-hover:scale-110">
               <Instagram className="h-6 w-6" />
