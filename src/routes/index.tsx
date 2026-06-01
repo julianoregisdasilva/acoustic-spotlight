@@ -126,7 +126,7 @@ function Index() {
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {videos.map((v) => (
-            <VideoCard key={v.id} id={v.id} title={v.title} />
+            <VideoCard key={v.src} src={v.src} title={v.title} />
           ))}
         </div>
       </section>
