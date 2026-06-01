@@ -6,6 +6,10 @@ import video1 from "@/assets/video_1.mp4.asset.json";
 import video2 from "@/assets/video_2.mp4.asset.json";
 import video3 from "@/assets/video_3.mp4.asset.json";
 import video4 from "@/assets/video_4.mp4.asset.json";
+import poster1 from "@/assets/poster_1.jpg.asset.json";
+import poster2 from "@/assets/poster_2.jpg.asset.json";
+import poster3 from "@/assets/poster_3.jpg.asset.json";
+import poster4 from "@/assets/poster_4.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,10 +25,10 @@ export const Route = createFileRoute("/")({
 });
 
 const videos = [
-  { src: video1.url, title: "Apresentação 1" },
-  { src: video2.url, title: "Apresentação 2" },
-  { src: video3.url, title: "Apresentação 3" },
-  { src: video4.url, title: "Apresentação 4" },
+  { src: video1.url, poster: poster1.url, title: "Apresentação 1" },
+  { src: video2.url, poster: poster2.url, title: "Apresentação 2" },
+  { src: video3.url, poster: poster3.url, title: "Apresentação 3" },
+  { src: video4.url, poster: poster4.url, title: "Apresentação 4" },
 ];
 
 const fotos = [
@@ -40,7 +44,7 @@ const hoverFrame =
   "border-2 border-transparent transition-[border-color,box-shadow] duration-300 ease-out " +
   "hover:cursor-pointer hover:border-accent hover:shadow-[0_0_0_2px_var(--accent)]";
 
-function VideoCard({ src, title }: { src: string; title: string }) {
+function VideoCard({ src, poster, title }: { src: string; poster: string; title: string }) {
   const [playing, setPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -54,6 +58,7 @@ function VideoCard({ src, title }: { src: string; title: string }) {
       <video
         ref={videoRef}
         src={src}
+        poster={poster}
         title={title}
         controls={playing}
         playsInline
@@ -126,7 +131,7 @@ function Index() {
         </div>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
           {videos.map((v) => (
-            <VideoCard key={v.src} src={v.src} title={v.title} />
+            <VideoCard key={v.src} src={v.src} poster={v.poster} title={v.title} />
           ))}
         </div>
       </section>
