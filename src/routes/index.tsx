@@ -21,10 +21,10 @@ export const Route = createFileRoute("/")({
 });
 
 const videos = [
-  { id: "FOPq1gI7ByU", title: "Apresentação ao vivo 1" },
-  { id: "vvlak9jRG-s", title: "Apresentação ao vivo 2" },
-  { id: "sVn8KeRTTsc", title: "Short 1" },
-  { id: "ha07Xzf2GrE", title: "Short 2" },
+  { src: video1.url, title: "Apresentação 1" },
+  { src: video2.url, title: "Apresentação 2" },
+  { src: video3.url, title: "Apresentação 3" },
+  { src: video4.url, title: "Apresentação 4" },
 ];
 
 const fotos = [
