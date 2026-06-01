@@ -98,14 +98,14 @@ function Index() {
       {/* Hero / Header */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-primary)/15%,_transparent_60%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
         <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 py-12 text-center md:py-20">
           <img
             src="/images/logo.jpeg"
             alt="Renato Alves Acústico"
             className="w-full max-w-3xl object-contain"
           />
-          <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg">
+          <p className="mt-6 max-w-xl text-lg font-medium text-primary md:text-xl">
             Voz e violão para bares, restaurantes e eventos corporativos.
           </p>
         </div>
