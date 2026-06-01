@@ -50,7 +50,7 @@ function VideoCard({ src, title }: { src: string; title: string }) {
   };
 
   return (
-    <div className={`group aspect-video w-full ${hoverFrame}`}>
+    <div className={`group aspect-[9/16] w-full ${hoverFrame}`}>
       <video
         ref={videoRef}
         src={src}
@@ -58,7 +58,7 @@ function VideoCard({ src, title }: { src: string; title: string }) {
         controls={playing}
         playsInline
         preload="metadata"
-        className="absolute inset-0 h-full w-full bg-black object-cover"
+        className="absolute inset-0 h-full w-full bg-black object-contain"
       />
       {!playing && (
         <button
