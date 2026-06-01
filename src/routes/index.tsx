@@ -1,7 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Play, Instagram, X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import video1 from "@/assets/video_1.mp4.asset.json";
+import video2 from "@/assets/video_2.mp4.asset.json";
+import video3 from "@/assets/video_3.mp4.asset.json";
+import video4 from "@/assets/video_4.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,10 +21,10 @@ export const Route = createFileRoute("/")({
 });
 
 const videos = [
-  { id: "FOPq1gI7ByU", title: "Apresentação ao vivo 1" },
-  { id: "vvlak9jRG-s", title: "Apresentação ao vivo 2" },
-  { id: "sVn8KeRTTsc", title: "Short 1" },
-  { id: "ha07Xzf2GrE", title: "Short 2" },
+  { src: video1.url, title: "Apresentação 1" },
+  { src: video2.url, title: "Apresentação 2" },
+  { src: video3.url, title: "Apresentação 3" },
+  { src: video4.url, title: "Apresentação 4" },
 ];
 
 const fotos = [
@@ -36,32 +40,33 @@ const hoverFrame =
   "border-2 border-transparent transition-[border-color,box-shadow] duration-300 ease-out " +
   "hover:cursor-pointer hover:border-accent hover:shadow-[0_0_0_2px_var(--accent)]";
 
-function VideoCard({ id, title }: { id: string; title: string }) {
+function VideoCard({ src, title }: { src: string; title: string }) {
   const [playing, setPlaying] = useState(false);
-  const thumb = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handlePlay = () => {
+    setPlaying(true);
+    requestAnimationFrame(() => videoRef.current?.play());
+  };
+
   return (
     <div className={`group aspect-video w-full ${hoverFrame}`}>
-      {playing ? (
-        <iframe
-          className="absolute inset-0 h-full w-full"
-          src={`https://www.youtube.com/embed/${id}?autoplay=1&rel=0`}
-          title={title}
-          allow="accelerated-sensors; autoplay; encrypted-media; picture-in-picture"
-          allowFullScreen
-        />
-      ) : (
+      <video
+        ref={videoRef}
+        src={src}
+        title={title}
+        controls={playing}
+        playsInline
+        preload="metadata"
+        className="absolute inset-0 h-full w-full bg-black object-cover"
+      />
+      {!playing && (
         <button
           type="button"
-          onClick={() => setPlaying(true)}
+          onClick={handlePlay}
           aria-label={`Reproduzir ${title}`}
           className="absolute inset-0 flex cursor-pointer items-center justify-center"
         >
-          <img
-            src={thumb}
-            alt={title}
-            loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
           <span className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
           <span className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl transition-transform duration-300 group-hover:scale-110">
             <Play className="h-7 w-7 translate-x-0.5 fill-current" />
@@ -121,7 +126,7 @@ function Index() {
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {videos.map((v) => (
-            <VideoCard key={v.id} id={v.id} title={v.title} />
+            <VideoCard key={v.src} src={v.src} title={v.title} />
           ))}
         </div>
       </section>
