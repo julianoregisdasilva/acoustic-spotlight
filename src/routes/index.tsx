@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { Play, Instagram, X, Download } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { FadeIn } from "@/components/FadeIn";
 import video1 from "@/assets/video_1.mp4.asset.json";
 import video2 from "@/assets/video_2.mp4.asset.json";
 import video3 from "@/assets/video_3.mp4.asset.json";
@@ -10,6 +11,7 @@ import poster1 from "@/assets/poster_1.jpg.asset.json";
 import poster2 from "@/assets/poster_2.jpg.asset.json";
 import poster3 from "@/assets/poster_3.jpg.asset.json";
 import poster4 from "@/assets/poster_4.jpg.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
