@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
-import { Play, Instagram, X } from "lucide-react";
+import { Play, Instagram, X, Download } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import video1 from "@/assets/video_1.mp4.asset.json";
 import video2 from "@/assets/video_2.mp4.asset.json";
