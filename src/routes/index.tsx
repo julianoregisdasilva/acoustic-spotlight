@@ -103,6 +103,25 @@ function PhotoCard({ src, index, onOpen }: { src: string; index: number; onOpen:
 function Index() {
   const [openPhoto, setOpenPhoto] = useState<string | null>(null);
 
+  const handleDownload = async () => {
+    if (!openPhoto) return;
+    try {
+      const response = await fetch(openPhoto);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = openPhoto.split("/").pop() || "foto.jpg";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch {
+      // fallback: open in new tab
+      window.open(openPhoto, "_blank");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero / Header */}
