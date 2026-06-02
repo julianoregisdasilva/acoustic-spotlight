@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
-import { Play, Instagram, X } from "lucide-react";
+import { Play, Instagram, X, Download } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import video1 from "@/assets/video_1.mp4.asset.json";
 import video2 from "@/assets/video_2.mp4.asset.json";
@@ -102,6 +102,25 @@ function PhotoCard({ src, index, onOpen }: { src: string; index: number; onOpen:
 
 function Index() {
   const [openPhoto, setOpenPhoto] = useState<string | null>(null);
+
+  const handleDownload = async () => {
+    if (!openPhoto) return;
+    try {
+      const response = await fetch(openPhoto);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = openPhoto.split("/").pop() || "foto.jpg";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch {
+      // fallback: open in new tab
+      window.open(openPhoto, "_blank");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -211,11 +230,22 @@ function Index() {
         >
           <DialogTitle className="sr-only">Foto ampliada</DialogTitle>
           {openPhoto && (
-            <img
-              src={openPhoto}
-              alt="Foto ampliada — Renato Acústico"
-              className="mx-auto max-h-[85vh] w-auto rounded-md object-contain"
-            />
+            <>
+              <button
+                type="button"
+                onClick={handleDownload}
+                aria-label="Baixar foto"
+                className="absolute right-12 top-4 z-10 rounded-sm opacity-70 ring-offset-background cursor-pointer transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+              >
+                <Download className="h-4 w-4" />
+                <span className="sr-only">Baixar</span>
+              </button>
+              <img
+                src={openPhoto}
+                alt="Foto ampliada — Renato Acústico"
+                className="mx-auto max-h-[85vh] w-auto rounded-md object-contain"
+              />
+            </>
           )}
         </DialogContent>
       </Dialog>
