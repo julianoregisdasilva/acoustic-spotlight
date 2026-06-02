@@ -259,9 +259,9 @@ function Index() {
                 type="button"
                 onClick={handleDownload}
                 aria-label="Baixar foto"
-                className="absolute right-12 top-4 z-10 rounded-sm opacity-70 ring-offset-background cursor-pointer transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                className="absolute right-12 top-4 z-10 rounded-sm opacity-70 ring-offset-background cursor-pointer transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-[#05E8FF]"
               >
-                <Download className="h-4 w-4" />
+                <Download className="h-[18px] w-[18px]" />
                 <span className="sr-only">Baixar</span>
               </button>
               <img
