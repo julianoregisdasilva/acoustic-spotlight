@@ -263,7 +263,7 @@ function Index() {
                 aria-label="Baixar foto"
                 className="absolute right-12 top-4 z-10 rounded-sm opacity-70 ring-offset-background cursor-pointer transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-[#05E8FF]"
               >
-                <Download className="h-[18px] w-[18px]" />
+                <Download className="h-[22px] w-[22px]" />
                 <span className="sr-only">Baixar</span>
               </button>
               <img
