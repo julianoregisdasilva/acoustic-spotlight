@@ -139,7 +139,7 @@ function Index() {
             />
           </FadeIn>
           <FadeIn direction="up" duration={800} delay={200}>
-            <p className="mt-6 max-w-xl text-lg font-medium text-primary md:text-xl">
+            <p className="mt-6 max-w-xl text-lg font-medium text-[#05E8FF] md:text-xl">
               Voz e violão para bares, restaurantes e eventos corporativos.
             </p>
           </FadeIn>
