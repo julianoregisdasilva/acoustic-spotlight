@@ -253,6 +253,8 @@ function Index() {
           onOpenAutoFocus={(e) => e.preventDefault()}
         >
           <DialogTitle className="sr-only">Foto ampliada</DialogTitle>
+          {/* Faixa superior por baixo dos botões */}
+          <div className="absolute left-0 right-0 top-0 z-0 h-12 bg-[#333]/60" />
           {openPhoto && (
             <>
               <button
