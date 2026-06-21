@@ -4,18 +4,13 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { FadeIn } from "@/components/FadeIn";
 
 const videos = [
-  { src: "/media/video_1.mp4", poster: "/media/poster_1.jpg", title: "Apresentação 1" },
-  { src: "/media/video_2.mp4", poster: "/media/poster_2.jpg", title: "Apresentação 2" },
-  { src: "/media/video_3.mp4", poster: "/media/poster_3.jpg", title: "Apresentação 3" },
-  { src: "/media/video_4.mp4", poster: "/media/poster_4.jpg", title: "Apresentação 4" },
+  { src: "media/video_1.mp4", poster: "media/poster_1.jpg", title: "Apresentação 1" },
+  { src: "media/video_2.mp4", poster: "media/poster_2.jpg", title: "Apresentação 2" },
+  { src: "media/video_3.mp4", poster: "media/poster_3.jpg", title: "Apresentação 3" },
+  { src: "media/video_4.mp4", poster: "media/poster_4.jpg", title: "Apresentação 4" },
 ];
 
-const fotos = [
-  "/images/foto1.jpeg",
-  "/images/foto2.jpeg",
-  "/images/foto3.jpeg",
-  "/images/foto4.jpeg",
-];
+const fotos = ["images/foto1.jpeg", "images/foto2.jpeg", "images/foto3.jpeg", "images/foto4.jpeg"];
 
 const hoverFrame =
   "relative overflow-hidden rounded-xl bg-card shadow-lg " +
@@ -107,7 +102,7 @@ export default function App() {
         <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 py-12 text-center md:py-20">
           <FadeIn direction="up" duration={800}>
             <img
-              src="/images/logo.jpeg"
+              src="images/logo.jpeg"
               alt="Renato Alves Acústico"
               className="w-full max-w-3xl object-contain"
             />
@@ -185,7 +180,9 @@ export default function App() {
                 </svg>
               </span>
               <span className="text-left">
-                <span className="block text-xs uppercase tracking-widest text-muted-foreground">WhatsApp</span>
+                <span className="block text-xs uppercase tracking-widest text-muted-foreground">
+                  WhatsApp
+                </span>
                 <span className="block font-medium">(48) 99167-7275</span>
               </span>
             </a>
@@ -203,7 +200,9 @@ export default function App() {
                 <Instagram className="h-6 w-6" />
               </span>
               <span className="text-left">
-                <span className="block text-xs uppercase tracking-widest text-muted-foreground">Instagram</span>
+                <span className="block text-xs uppercase tracking-widest text-muted-foreground">
+                  Instagram
+                </span>
                 <span className="block font-medium">@renatoacustico</span>
               </span>
             </a>
