@@ -10,7 +10,7 @@ export default defineConfig({
     // Optional: Forces Vite to empty the folder before building
     emptyOutDir: true,
   },
-  base: "/acoustic-spotlight",
+  base: "/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
