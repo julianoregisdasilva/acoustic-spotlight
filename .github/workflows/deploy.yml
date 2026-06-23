@@ -1,8 +1,13 @@
+# Name of the workflow as it appears in the GitHub Actions tab
 name: Deploy Landing Page
+
+# What happens when I push something in my branch 'main'
 on:
   push:
     branches: [main] 
   workflow_dispatch:
+  
+# Sets the minimum permissions required for the GITHUB_TOKEN to securely interact with GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -12,12 +17,20 @@ jobs:
       environment:
         name: github-pages
       runs-on: ubuntu-latest
+      
       steps:
+        # Step 1: Fetches the repository code so the runner can access it
         - uses: actions/checkout@v4
+        
+        # Step 2: Installs Node.js on the runner, pinning version 20 and caching npm dependencies to speed up future runs
         - uses: actions/setup-node@v4
           with: {node-version: 20, cache: 'npm'}
         - run: npm ci
         - run: npm run build
+
+        # Step 3: Upload static generated files artifact
         - uses: actions/upload-pages-artifact@v3
           with: {path: './dist'}
+
+        # Step 4:  Takes the uploaded artifact and publishes it live to your custom GitHub Pages URL
         - uses: actions/deploy-pages@v4
