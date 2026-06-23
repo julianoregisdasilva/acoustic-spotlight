@@ -12,6 +12,8 @@
   base: "/",
 
 # package.json
+  Tell GitHub Pages the final URL where the Project will be hosted, helping to generate correct production links
+  "homepage": "https://www.renatoalvesacustico.com.br"
   "predeploy": "npm run build",
   "deploy": "gh-pages -d dist"
 
