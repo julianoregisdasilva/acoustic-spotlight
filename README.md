@@ -1,6 +1,6 @@
 To deploy correctly, some adjustments were made in some files:
 
-#vite.config.ts:
+# vite.config.ts:
  build: {
     // Relative path string (relative to project root)
     outDir: "dist",
@@ -11,11 +11,11 @@ To deploy correctly, some adjustments were made in some files:
   // Tells Vite the base public path when served in development or production, ensuring assets are correctly loaded on GitHub Pages.
   base: "/",
 
-#package.json
+# package.json
   "predeploy": "npm run build",
   "deploy": "gh-pages -d dist"
 
-#CNAME
+# CNAME
 In the project root, I created a file called CNAME containing the URL to tell GitHub pages which custom domain to use, ensuring the site is accessible via my personalized web address and preventing redirection issues upon future updates.
 
 I created .github/workflows/deploy.yml to tell GitHub Actions how to deploy my project. For that to work, it's necessary to go to the Settings tab, Secrets and Variables sections, Actions subsection and create a new Repository Secret.
