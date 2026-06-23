@@ -1,4 +1,4 @@
-**To deploy correctly, some adjustments were made in some files:
+** To deploy correctly, some adjustments were made in some files:
 
 # vite.config.ts:
  build: {  
