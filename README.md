@@ -9,7 +9,7 @@ build: {
    emptyOutDir: true,  
 },
  ```
-  // Tells Vite the base public path when served in development or production, ensuring assets are correctly loaded on GitHub Pages.
+  // Tells Vite the base public path when served in development or production, ensuring assets are correctly loaded on GitHub Pages.  
   base: "/",
 
 # package.json
